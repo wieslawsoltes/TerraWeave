@@ -1,0 +1,80 @@
+name: Deploy TerraWeave to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: terraweave-pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Core tests and dependency-free static build
+        run: npm test
+      - name: Validate all ten independently installed packages
+        run: npm run test:packages
+      - name: Regenerate binary examples and final distribution
+        run: |
+          npm run examples
+          npm run build
+          node --input-type=module -e "import{writeFileSync}from'node:fs';writeFileSync('dist/version.json',JSON.stringify({name:'TerraWeave',version:'0.1.0',revision:process.env.GITHUB_SHA,builtAt:new Date().toISOString()},null,2)+'\n')"
+      - name: Verify formats with independent readers
+        run: |
+          python3 -m pip install Pillow numpy opencv-python-headless trimesh
+          python3 tests/external_readers.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: terraweave-packages-and-validation
+          path: |
+            artifacts
+            tests/package-results.json
+            tests/external-results.json
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish verified application
+        id: deployment
+        uses: actions/deploy-pages@v4
+  verify-live:
+    needs: deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install browser verification tools
+        run: |
+          python3 -m pip install playwright
+          python3 -m playwright install --with-deps chromium
+      - name: Verify published revision, assets and running application
+        env:
+          PAGE_URL: ${{ needs.deploy.outputs.page_url }}
+        run: python3 scripts/verify-pages.py "$PAGE_URL" "$GITHUB_SHA"
+      - name: Preserve public-site screenshots and capability report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: terraweave-live-site-verification
+          path: tests/pages-verification
+          if-no-files-found: warn
