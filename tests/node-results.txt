@@ -1,0 +1,416 @@
+
+> terraweave-workspace@0.1.0 test
+> npm run build && node --test tests/*.test.mjs
+
+
+> terraweave-workspace@0.1.0 build
+> node scripts/build.mjs && node scripts/standalone.mjs
+
+Built standalone, dependency-free static distribution in dist/
+Linked single-file app: 360 KiB
+TAP version 13
+# Subtest: all six starter graphs validate and have a reachable output
+ok 1 - all six starter graphs validate and have a reachable output
+  ---
+  duration_ms: 6.538942
+  type: 'test'
+  ...
+# Subtest: connections reject cycles atomically and replace one input
+ok 2 - connections reject cycles atomically and replace one input
+  ---
+  duration_ms: 5.699421
+  type: 'test'
+  ...
+# Subtest: project validation rejects malformed parameters, assets, strokes and topology
+ok 3 - project validation rejects malformed parameters, assets, strokes and topology
+  ---
+  duration_ms: 1.139664
+  type: 'test'
+  ...
+# Subtest: graph serialization and history snapshots are independent
+ok 4 - graph serialization and history snapshots are independent
+  ---
+  duration_ms: 0.55138
+  type: 'test'
+  ...
+# Subtest: reference counted packet aliases retain exactly one reference per owned field
+ok 5 - reference counted packet aliases retain exactly one reference per owned field
+  ---
+  duration_ms: 0.561312
+  type: 'test'
+  ...
+# Subtest: stable serialization and matrix inverse are consistent
+ok 6 - stable serialization and matrix inverse are consistent
+  ---
+  duration_ms: 1.751341
+  type: 'test'
+  ...
+# Subtest: engine cache ignores layout and invalidates only dependent nodes
+ok 7 - engine cache ignores layout and invalidates only dependent nodes
+  ---
+  duration_ms: 342.421558
+  type: 'test'
+  ...
+# Subtest: engine cancellation rejects superseded builds without releasing owned results
+ok 8 - engine cancellation rejects superseded builds without releasing owned results
+  ---
+  duration_ms: 64.890172
+  type: 'test'
+  ...
+# Subtest: cache pruning respects live consumer references
+ok 9 - cache pruning respects live consumer references
+  ---
+  duration_ms: 39.324288
+  type: 'test'
+  ...
+# Subtest: PNG16 stores real big-endian 16-bit samples and round trips
+ok 10 - PNG16 stores real big-endian 16-bit samples and round trips
+  ---
+  duration_ms: 79.554742
+  type: 'test'
+  ...
+# Subtest: PNG corruption is detected before import
+ok 11 - PNG corruption is detected before import
+  ---
+  duration_ms: 4.925524
+  type: 'test'
+  ...
+# Subtest: RGBA PNG and scalar PNG encode declared color models
+ok 12 - RGBA PNG and scalar PNG encode declared color models
+  ---
+  duration_ms: 9.186582
+  type: 'test'
+  ...
+# Subtest: RAW formats have documented byte order and preserve float values
+ok 13 - RAW formats have documented byte order and preserve float values
+  ---
+  duration_ms: 3.02581
+  type: 'test'
+  ...
+# Subtest: OpenEXR has valid magic, FLOAT Y channel and scanline offsets
+ok 14 - OpenEXR has valid magic, FLOAT Y channel and scanline offsets
+  ---
+  duration_ms: 2.534922
+  type: 'test'
+  ...
+# Subtest: terrain mesh has upward winding, unit normals, UVs and valid bounds
+ok 15 - terrain mesh has upward winding, unit normals, UVs and valid bounds
+  ---
+  duration_ms: 2.228752
+  type: 'test'
+  ...
+# Subtest: GLB and OBJ serialize usable mesh structures
+ok 16 - GLB and OBJ serialize usable mesh structures
+  ---
+  duration_ms: 8.807547
+  type: 'test'
+  ...
+# Subtest: ZIP files include valid CRC and reject unsafe paths
+ok 17 - ZIP files include valid CRC and reject unsafe paths
+  ---
+  duration_ms: 0.379088
+  type: 'test'
+  ...
+# Subtest: normal maps and splat weights encode geometric meaning
+ok 18 - normal maps and splat weights encode geometric meaning
+  ---
+  duration_ms: 3.32007
+  type: 'test'
+  ...
+# Subtest: asset bundle is a complete ZIP with simulation maps
+ok 19 - asset bundle is a complete ZIP with simulation maps
+  ---
+  duration_ms: 52.149031
+  type: 'test'
+  ...
+# Subtest: noise is finite, seeded and deterministic across signed coordinates
+ok 20 - noise is finite, seeded and deterministic across signed coordinates
+  ---
+  duration_ms: 2.347616
+  type: 'test'
+  ...
+# Subtest: kernel mountain: finite outputs and declared dimensions
+ok 21 - kernel mountain: finite outputs and declared dimensions
+  ---
+  duration_ms: 131.25368
+  type: 'test'
+  ...
+# Subtest: kernel noise: finite outputs and declared dimensions
+ok 22 - kernel noise: finite outputs and declared dimensions
+  ---
+  duration_ms: 38.383585
+  type: 'test'
+  ...
+# Subtest: kernel island: finite outputs and declared dimensions
+ok 23 - kernel island: finite outputs and declared dimensions
+  ---
+  duration_ms: 20.050032
+  type: 'test'
+  ...
+# Subtest: kernel volcano: finite outputs and declared dimensions
+ok 24 - kernel volcano: finite outputs and declared dimensions
+  ---
+  duration_ms: 25.815686
+  type: 'test'
+  ...
+# Subtest: kernel dunes: finite outputs and declared dimensions
+ok 25 - kernel dunes: finite outputs and declared dimensions
+  ---
+  duration_ms: 17.757617
+  type: 'test'
+  ...
+# Subtest: kernel canyon: finite outputs and declared dimensions
+ok 26 - kernel canyon: finite outputs and declared dimensions
+  ---
+  duration_ms: 29.829351
+  type: 'test'
+  ...
+# Subtest: kernel crater: finite outputs and declared dimensions
+ok 27 - kernel crater: finite outputs and declared dimensions
+  ---
+  duration_ms: 19.83934
+  type: 'test'
+  ...
+# Subtest: kernel cellular: finite outputs and declared dimensions
+ok 28 - kernel cellular: finite outputs and declared dimensions
+  ---
+  duration_ms: 26.465949
+  type: 'test'
+  ...
+# Subtest: kernel ridge: finite outputs and declared dimensions
+ok 29 - kernel ridge: finite outputs and declared dimensions
+  ---
+  duration_ms: 21.281324
+  type: 'test'
+  ...
+# Subtest: kernel gradient: finite outputs and declared dimensions
+ok 30 - kernel gradient: finite outputs and declared dimensions
+  ---
+  duration_ms: 11.86454
+  type: 'test'
+  ...
+# Subtest: kernel constant: finite outputs and declared dimensions
+ok 31 - kernel constant: finite outputs and declared dimensions
+  ---
+  duration_ms: 9.932922
+  type: 'test'
+  ...
+# Subtest: kernel hydraulic: finite outputs and declared dimensions
+ok 32 - kernel hydraulic: finite outputs and declared dimensions
+  ---
+  duration_ms: 124.554938
+  type: 'test'
+  ...
+# Subtest: kernel thermal: finite outputs and declared dimensions
+ok 33 - kernel thermal: finite outputs and declared dimensions
+  ---
+  duration_ms: 23.525732
+  type: 'test'
+  ...
+# Subtest: kernel snow: finite outputs and declared dimensions
+ok 34 - kernel snow: finite outputs and declared dimensions
+  ---
+  duration_ms: 12.538044
+  type: 'test'
+  ...
+# Subtest: kernel combine: finite outputs and declared dimensions
+ok 35 - kernel combine: finite outputs and declared dimensions
+  ---
+  duration_ms: 8.267299
+  type: 'test'
+  ...
+# Subtest: kernel warp: finite outputs and declared dimensions
+ok 36 - kernel warp: finite outputs and declared dimensions
+  ---
+  duration_ms: 9.041697
+  type: 'test'
+  ...
+# Subtest: kernel terrace: finite outputs and declared dimensions
+ok 37 - kernel terrace: finite outputs and declared dimensions
+  ---
+  duration_ms: 6.688663
+  type: 'test'
+  ...
+# Subtest: kernel levels: finite outputs and declared dimensions
+ok 38 - kernel levels: finite outputs and declared dimensions
+  ---
+  duration_ms: 7.784896
+  type: 'test'
+  ...
+# Subtest: kernel clamp: finite outputs and declared dimensions
+ok 39 - kernel clamp: finite outputs and declared dimensions
+  ---
+  duration_ms: 7.806214
+  type: 'test'
+  ...
+# Subtest: kernel invert: finite outputs and declared dimensions
+ok 40 - kernel invert: finite outputs and declared dimensions
+  ---
+  duration_ms: 8.092535
+  type: 'test'
+  ...
+# Subtest: kernel blur: finite outputs and declared dimensions
+ok 41 - kernel blur: finite outputs and declared dimensions
+  ---
+  duration_ms: 10.979477
+  type: 'test'
+  ...
+# Subtest: kernel sharpen: finite outputs and declared dimensions
+ok 42 - kernel sharpen: finite outputs and declared dimensions
+  ---
+  duration_ms: 8.275068
+  type: 'test'
+  ...
+# Subtest: kernel transform: finite outputs and declared dimensions
+ok 43 - kernel transform: finite outputs and declared dimensions
+  ---
+  duration_ms: 7.254705
+  type: 'test'
+  ...
+# Subtest: kernel power: finite outputs and declared dimensions
+ok 44 - kernel power: finite outputs and declared dimensions
+  ---
+  duration_ms: 9.195091
+  type: 'test'
+  ...
+# Subtest: kernel absolute: finite outputs and declared dimensions
+ok 45 - kernel absolute: finite outputs and declared dimensions
+  ---
+  duration_ms: 8.341863
+  type: 'test'
+  ...
+# Subtest: kernel normalize: finite outputs and declared dimensions
+ok 46 - kernel normalize: finite outputs and declared dimensions
+  ---
+  duration_ms: 7.08567
+  type: 'test'
+  ...
+# Subtest: kernel slope: finite outputs and declared dimensions
+ok 47 - kernel slope: finite outputs and declared dimensions
+  ---
+  duration_ms: 7.983984
+  type: 'test'
+  ...
+# Subtest: kernel height: finite outputs and declared dimensions
+ok 48 - kernel height: finite outputs and declared dimensions
+  ---
+  duration_ms: 6.897855
+  type: 'test'
+  ...
+# Subtest: kernel curvature: finite outputs and declared dimensions
+ok 49 - kernel curvature: finite outputs and declared dimensions
+  ---
+  duration_ms: 6.262227
+  type: 'test'
+  ...
+# Subtest: kernel aspect: finite outputs and declared dimensions
+ok 50 - kernel aspect: finite outputs and declared dimensions
+  ---
+  duration_ms: 8.642227
+  type: 'test'
+  ...
+# Subtest: kernel edge: finite outputs and declared dimensions
+ok 51 - kernel edge: finite outputs and declared dimensions
+  ---
+  duration_ms: 7.216088
+  type: 'test'
+  ...
+# Subtest: kernel flow: finite outputs and declared dimensions
+ok 52 - kernel flow: finite outputs and declared dimensions
+  ---
+  duration_ms: 13.823977
+  type: 'test'
+  ...
+# Subtest: kernel biome: finite outputs and declared dimensions
+ok 53 - kernel biome: finite outputs and declared dimensions
+  ---
+  duration_ms: 23.348221
+  type: 'test'
+  ...
+# Subtest: kernel colorize: finite outputs and declared dimensions
+ok 54 - kernel colorize: finite outputs and declared dimensions
+  ---
+  duration_ms: 16.581129
+  type: 'test'
+  ...
+# Subtest: kernel paint: finite outputs and declared dimensions
+ok 55 - kernel paint: finite outputs and declared dimensions
+  ---
+  duration_ms: 6.872943
+  type: 'test'
+  ...
+# Subtest: kernel import: finite outputs and declared dimensions
+ok 56 - kernel import: finite outputs and declared dimensions
+  ---
+  duration_ms: 7.474018
+  type: 'test'
+  ...
+# Subtest: kernel output: finite outputs and declared dimensions
+ok 57 - kernel output: finite outputs and declared dimensions
+  ---
+  duration_ms: 5.956707
+  type: 'test'
+  ...
+# Subtest: generators are deterministic and seeds affect terrain
+ok 58 - generators are deterministic and seeds affect terrain
+  ---
+  duration_ms: 99.806465
+  type: 'test'
+  ...
+# Subtest: volcano rim sharpness changes the heightfield
+ok 59 - volcano rim sharpness changes the heightfield
+  ---
+  duration_ms: 10.512466
+  type: 'test'
+  ...
+# Subtest: thermal transport conserves material and a zero mask is identity
+ok 60 - thermal transport conserves material and a zero mask is identity
+  ---
+  duration_ms: 95.210515
+  type: 'test'
+  ...
+# Subtest: hydraulic transport conserves terrain plus settled sediment
+ok 61 - hydraulic transport conserves terrain plus settled sediment
+  ---
+  duration_ms: 42.08977
+  type: 'test'
+  ...
+# Subtest: dry hydraulic field does not spontaneously erode
+ok 62 - dry hydraulic field does not spontaneously erode
+  ---
+  duration_ms: 59.464901
+  type: 'test'
+  ...
+# Subtest: simulation handles negative imported elevations without inverted flux
+ok 63 - simulation handles negative imported elevations without inverted flux
+  ---
+  duration_ms: 35.254654
+  type: 'test'
+  ...
+# Subtest: zero masks preserve base terrain and uncolored biome height
+ok 64 - zero masks preserve base terrain and uncolored biome height
+  ---
+  duration_ms: 26.298521
+  type: 'test'
+  ...
+# Subtest: normalization handles constant fields and remaps extrema
+ok 65 - normalization handles constant fields and remaps extrema
+  ---
+  duration_ms: 13.132399
+  type: 'test'
+  ...
+# Subtest: sculpt strokes replay deterministically and modify a local neighborhood
+ok 66 - sculpt strokes replay deterministically and modify a local neighborhood
+  ---
+  duration_ms: 0.338545
+  type: 'test'
+  ...
+1..66
+# tests 66
+# suites 0
+# pass 66
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1527.783536

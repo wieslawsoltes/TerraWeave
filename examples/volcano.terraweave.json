@@ -1,0 +1,150 @@
+{
+  "format": "terraweave",
+  "version": 1,
+  "name": "Obsidian caldera",
+  "resolution": 256,
+  "worldSize": 4000,
+  "elevation": 1800,
+  "nodes": [
+    {
+      "id": "base",
+      "type": "volcano",
+      "name": "Volcano",
+      "x": 40,
+      "y": 90,
+      "params": {
+        "seed": 42,
+        "scale": 3.4,
+        "octaves": 7,
+        "roughness": 0.52,
+        "warp": 0.9,
+        "height": 0.85,
+        "crater": 0.23,
+        "rim": 3
+      },
+      "enabled": true
+    },
+    {
+      "id": "shape",
+      "type": "warp",
+      "name": "Warp",
+      "x": 270,
+      "y": 90,
+      "params": {
+        "strength": 0.025,
+        "scale": 7.5,
+        "seed": 72
+      },
+      "enabled": true
+    },
+    {
+      "id": "erode",
+      "type": "hydraulic",
+      "name": "Hydraulic erosion",
+      "x": 500,
+      "y": 90,
+      "params": {
+        "iterations": 65,
+        "rain": 0.003,
+        "erosion": 0.16,
+        "capacity": 4,
+        "deposition": 0.3,
+        "evaporation": 0.075,
+        "flowRate": 0.35
+      },
+      "enabled": true
+    },
+    {
+      "id": "surface",
+      "type": "biome",
+      "name": "Biome",
+      "x": 750,
+      "y": 90,
+      "params": {
+        "palette": 2,
+        "snowLine": 0.6,
+        "rockSlope": 0.6,
+        "variation": 0.18
+      },
+      "enabled": true
+    },
+    {
+      "id": "out",
+      "type": "output",
+      "name": "Output",
+      "x": 1000,
+      "y": 90,
+      "params": {},
+      "enabled": true
+    },
+    {
+      "id": "slope",
+      "type": "slope",
+      "name": "Slope",
+      "x": 500,
+      "y": 330,
+      "params": {
+        "low": 20,
+        "high": 55
+      },
+      "enabled": true
+    },
+    {
+      "id": "altitude",
+      "type": "height",
+      "name": "Height range",
+      "x": 750,
+      "y": 330,
+      "params": {
+        "low": 0.5,
+        "high": 1,
+        "softness": 0.1
+      },
+      "enabled": true
+    }
+  ],
+  "edges": [
+    {
+      "from": "base",
+      "port": "height",
+      "to": "shape",
+      "input": "a"
+    },
+    {
+      "from": "shape",
+      "port": "height",
+      "to": "erode",
+      "input": "a"
+    },
+    {
+      "from": "erode",
+      "port": "height",
+      "to": "surface",
+      "input": "a"
+    },
+    {
+      "from": "surface",
+      "port": "height",
+      "to": "out",
+      "input": "a"
+    },
+    {
+      "from": "erode",
+      "port": "height",
+      "to": "slope",
+      "input": "a"
+    },
+    {
+      "from": "erode",
+      "port": "height",
+      "to": "altitude",
+      "input": "a"
+    }
+  ],
+  "output": "out",
+  "view": {
+    "palette": 2,
+    "waterLevel": 0.03,
+    "snowLine": 0.6
+  }
+}

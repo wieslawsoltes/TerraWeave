@@ -1,0 +1,23 @@
+{
+  "name": "@terraweave/renderer",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Terrain rendering with WebGPU, WebGL2 and software fallback",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./shaders": "./src/shaders.js",
+    "./camera": "./src/camera.js",
+    "./glsl": "./src/gl.js",
+    "./software": "./src/software.js"
+  },
+  "files": [
+    "src"
+  ],
+  "license": "MIT",
+  "sideEffects": false,
+  "dependencies": {
+    "@terraweave/core": "0.1.0",
+    "@terraweave/math": "0.1.0"
+  }
+}

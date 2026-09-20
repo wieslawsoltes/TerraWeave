@@ -1,0 +1,41 @@
+{
+  "passed": 24,
+  "checks": [
+    "Initial graph builds a nonuniform finite terrain",
+    "Four genuine hydraulic diagnostic outputs",
+    "Inspector edit updates kernel parameters",
+    "Undo restores parameter",
+    "Redo reapplies parameter",
+    "Unchanged graph reuses five cached nodes",
+    "Flow output switches to 2D preview",
+    "Sculpt gesture records real dabs",
+    "Brush gesture is one undo step",
+    "Brush gesture redo is deterministic",
+    "Paste validation is atomic",
+    "Duplicate retains upstream dependencies",
+    "Graph nodes move through pointer capture",
+    "Command palette executes scene command",
+    "Export UI rebuilds and creates genuine PNG16",
+    "Portable project save includes graph and sculpt dabs",
+    "Preset island builds",
+    "Preset desert builds",
+    "Preset canyon builds",
+    "Preset volcano builds",
+    "Preset arctic builds",
+    "Preset alpine builds",
+    "Mobile layout fits viewport",
+    "Mobile properties panel opens"
+  ],
+  "backend": {
+    "compute": "CPU",
+    "worker": false,
+    "renderer": "Software",
+    "gpuErrors": []
+  },
+  "inline": true,
+  "pageErrors": [],
+  "seconds": 22.91,
+  "limitations": [
+    "Secure-context WebGPU, WebGL and IndexedDB were unavailable in this restricted browser; software viewport and main-thread CPU fallback were tested."
+  ]
+}

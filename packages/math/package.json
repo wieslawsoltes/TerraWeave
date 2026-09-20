@@ -1,0 +1,16 @@
+{
+  "name": "@terraweave/math",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Deterministic math and scalar-field primitives",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src"
+  ],
+  "license": "MIT",
+  "sideEffects": false,
+  "dependencies": {}
+}

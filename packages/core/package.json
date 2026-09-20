@@ -1,0 +1,16 @@
+{
+  "name": "@terraweave/core",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Graph model, project validation and raster ownership",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src"
+  ],
+  "license": "MIT",
+  "sideEffects": false,
+  "dependencies": {}
+}

@@ -1,0 +1,54 @@
+[
+  {
+    "type": "warning",
+    "text": "Project restore: SecurityError: Failed to execute 'open' on 'IDBFactory': access to the Indexed Database API is denied in this context.\n    at db (<anonymous>:812:98)\n    at new Promise (<anonymous>)\n    at ProjectStore.open (<anonymous>:812:41)\n    at ProjectStore.get (<anonymous>:813:57)\n    at boot (<anonymous>:3431:43)\n    at app/main.js (<anonymous>:3495:1)\n    at __require (<anonymous>:3498:139)\n    at <anonymous>:3498:172\n    at <anonymous>:3498:199"
+  },
+  {
+    "type": "warning",
+    "text": "WebGPU unavailable: Error: WebGPU is unavailable. A secure context and compatible browser/GPU are required.\n    at createGPUDevice (<anonymous>:2135:15)\n    at boot (<anonymous>:3453:33)"
+  },
+  {
+    "type": "warning",
+    "text": "Autosave: SecurityError: Failed to execute 'open' on 'IDBFactory': access to the Indexed Database API is denied in this context.\n    at db (<anonymous>:812:98)\n    at new Promise (<anonymous>)\n    at ProjectStore.open (<anonymous>:812:41)\n    at ProjectStore.set (<anonymous>:814:64)\n    at <anonymous>:2563:17"
+  },
+  {
+    "type": "warning",
+    "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+  },
+  {
+    "type": "warning",
+    "text": "Autosave: SecurityError: Failed to execute 'open' on 'IDBFactory': access to the Indexed Database API is denied in this context.\n    at db (<anonymous>:812:98)\n    at new Promise (<anonymous>)\n    at ProjectStore.open (<anonymous>:812:41)\n    at ProjectStore.set (<anonymous>:814:64)\n    at <anonymous>:2563:17"
+  },
+  {
+    "type": "warning",
+    "text": "Autosave: SecurityError: Failed to execute 'open' on 'IDBFactory': access to the Indexed Database API is denied in this context.\n    at db (<anonymous>:812:98)\n    at new Promise (<anonymous>)\n    at ProjectStore.open (<anonymous>:812:41)\n    at ProjectStore.set (<anonymous>:814:64)\n    at <anonymous>:2563:17"
+  },
+  {
+    "type": "warning",
+    "text": "Autosave: SecurityError: Failed to execute 'open' on 'IDBFactory': access to the Indexed Database API is denied in this context.\n    at db (<anonymous>:812:98)\n    at new Promise (<anonymous>)\n    at ProjectStore.open (<anonymous>:812:41)\n    at ProjectStore.set (<anonymous>:814:64)\n    at <anonymous>:2563:17"
+  },
+  {
+    "type": "warning",
+    "text": "Autosave: SecurityError: Failed to execute 'open' on 'IDBFactory': access to the Indexed Database API is denied in this context.\n    at db (<anonymous>:812:98)\n    at new Promise (<anonymous>)\n    at ProjectStore.open (<anonymous>:812:41)\n    at ProjectStore.set (<anonymous>:814:64)\n    at <anonymous>:2563:17"
+  },
+  {
+    "type": "warning",
+    "text": "Autosave: SecurityError: Failed to execute 'open' on 'IDBFactory': access to the Indexed Database API is denied in this context.\n    at db (<anonymous>:812:98)\n    at new Promise (<anonymous>)\n    at ProjectStore.open (<anonymous>:812:41)\n    at ProjectStore.set (<anonymous>:814:64)\n    at <anonymous>:2563:17"
+  },
+  {
+    "type": "warning",
+    "text": "Autosave: SecurityError: Failed to execute 'open' on 'IDBFactory': access to the Indexed Database API is denied in this context.\n    at db (<anonymous>:812:98)\n    at new Promise (<anonymous>)\n    at ProjectStore.open (<anonymous>:812:41)\n    at ProjectStore.set (<anonymous>:814:64)\n    at <anonymous>:2563:17"
+  },
+  {
+    "type": "warning",
+    "text": "Autosave: SecurityError: Failed to execute 'open' on 'IDBFactory': access to the Indexed Database API is denied in this context.\n    at db (<anonymous>:812:98)\n    at new Promise (<anonymous>)\n    at ProjectStore.open (<anonymous>:812:41)\n    at ProjectStore.set (<anonymous>:814:64)\n    at <anonymous>:2563:17"
+  },
+  {
+    "type": "warning",
+    "text": "Autosave: SecurityError: Failed to execute 'open' on 'IDBFactory': access to the Indexed Database API is denied in this context.\n    at db (<anonymous>:812:98)\n    at new Promise (<anonymous>)\n    at ProjectStore.open (<anonymous>:812:41)\n    at ProjectStore.set (<anonymous>:814:64)\n    at <anonymous>:2563:17"
+  },
+  {
+    "type": "warning",
+    "text": "Autosave: SecurityError: Failed to execute 'open' on 'IDBFactory': access to the Indexed Database API is denied in this context.\n    at db (<anonymous>:812:98)\n    at new Promise (<anonymous>)\n    at ProjectStore.open (<anonymous>:812:41)\n    at ProjectStore.set (<anonymous>:814:64)\n    at <anonymous>:2563:17"
+  }
+]

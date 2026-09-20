@@ -1,0 +1,17 @@
+{
+  "passed": 12,
+  "checks": [
+    "core: local npm archive installs and ESM entry loads",
+    "engine: local npm archive installs and ESM entry loads",
+    "graph-ui: local npm archive installs and ESM entry loads",
+    "io: local npm archive installs and ESM entry loads",
+    "kernels: local npm archive installs and ESM entry loads",
+    "math: local npm archive installs and ESM entry loads",
+    "nodes: local npm archive installs and ESM entry loads",
+    "renderer: local npm archive installs and ESM entry loads",
+    "ui: local npm archive installs and ESM entry loads",
+    "webgpu: local npm archive installs and ESM entry loads",
+    "Installed package integration: headless 64² graph → exact FLOAT EXR encoder",
+    "CSS, worker, shader and camera public subpath exports resolve"
+  ]
+}

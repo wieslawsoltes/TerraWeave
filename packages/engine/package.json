@@ -1,0 +1,19 @@
+{
+  "name": "@terraweave/engine",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Incremental DAG scheduling and result caching",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src"
+  ],
+  "license": "MIT",
+  "sideEffects": false,
+  "dependencies": {
+    "@terraweave/core": "0.1.0",
+    "@terraweave/nodes": "0.1.0"
+  }
+}

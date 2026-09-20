@@ -1,0 +1,25 @@
+{
+  "name": "terraweave-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "An original WebGPU procedural terrain authoring studio",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs && node scripts/standalone.mjs",
+    "start": "node scripts/serve.mjs",
+    "dev": "npm run build && npm start",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "test:browser": "python tests/browser.py",
+    "check": "npm test && npm run test:browser",
+    "pack": "node scripts/pack.mjs",
+    "examples": "node scripts/generate-examples.mjs",
+    "test:browser:inline": "python tests/browser.py --inline",
+    "test:packages": "node tests/packages.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

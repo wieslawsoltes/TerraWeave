@@ -1,0 +1,10 @@
+{
+  "passed": 5,
+  "checks": [
+    "Pillow reads genuine 16-bit PNG; values agree within one quantization level",
+    "OpenCV OpenEXR reader recovers exact FLOAT height samples",
+    "Python zipfile verifies every ZIP member CRC and unmodified RAW samples",
+    "trimesh loads GLB with 4,225 vertices, 8,192 triangles and correct meter bounds",
+    "trimesh loads OBJ with 4,225 vertices, 8,192 triangles and correct meter bounds"
+  ]
+}
