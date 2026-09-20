@@ -1,0 +1,21 @@
+{
+  "name": "@terraweave/kernels",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "CPU reference kernels and worker execution",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./worker.js": "./src/worker.js"
+  },
+  "files": [
+    "src"
+  ],
+  "license": "MIT",
+  "sideEffects": false,
+  "dependencies": {
+    "@terraweave/core": "0.1.0",
+    "@terraweave/math": "0.1.0",
+    "@terraweave/nodes": "0.1.0"
+  }
+}

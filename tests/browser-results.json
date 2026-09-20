@@ -29,12 +29,12 @@
   "backend": {
     "compute": "CPU",
     "worker": false,
-    "renderer": "Software",
+    "renderer": "WebGL2",
     "gpuErrors": []
   },
   "inline": true,
   "pageErrors": [],
-  "seconds": 22.91,
+  "seconds": 35.38,
   "limitations": [
     "Secure-context WebGPU, WebGL and IndexedDB were unavailable in this restricted browser; software viewport and main-thread CPU fallback were tested."
   ]

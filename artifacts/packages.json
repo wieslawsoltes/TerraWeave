@@ -1,0 +1,72 @@
+[
+  {
+    "name": "@terraweave/core",
+    "version": "0.1.0",
+    "filename": "terraweave-core-0.1.0.tgz",
+    "integrity": "sha512-R6TSDQC6Wj2L498Q00kBwe5GKJolTzImfg3V0qjBlXpytv5XSq7YbmGzk00WlCitsgfnqYzTmkxds2+bhaM7OA==",
+    "size": 4706
+  },
+  {
+    "name": "@terraweave/engine",
+    "version": "0.1.0",
+    "filename": "terraweave-engine-0.1.0.tgz",
+    "integrity": "sha512-BrTtNa+2dGNQDRJpXGl50kfD1pQkxHc1Sm/MR4jauE+/DsHU2lbjn96e7djf0rywbJa7XDfoyAadRkMSJKSOYw==",
+    "size": 3757
+  },
+  {
+    "name": "@terraweave/graph-ui",
+    "version": "0.1.0",
+    "filename": "terraweave-graph-ui-0.1.0.tgz",
+    "integrity": "sha512-g76sSPdnxnEkN33GbuC5Zvs4zKgEYvipiNxDWC1vNxL4JSWVy+zJla0RFEnDcNaP137ceVbf+K29MmMoK3EpMw==",
+    "size": 8181
+  },
+  {
+    "name": "@terraweave/io",
+    "version": "0.1.0",
+    "filename": "terraweave-io-0.1.0.tgz",
+    "integrity": "sha512-xDxfvHmXnzNAHvU3e7yT1MyDNOib7nvnIJgtq+pc0O9K8VNfoRqEySgZ9JQdGGLhNeaQ95XVpNeLS5XDKNcNhg==",
+    "size": 8185
+  },
+  {
+    "name": "@terraweave/kernels",
+    "version": "0.1.0",
+    "filename": "terraweave-kernels-0.1.0.tgz",
+    "integrity": "sha512-W6FRuOmoDJYglJY/zCy9tDbbJ4FsNeoEay1ViiY9kwtBc8Q1B8F64+n1H3WbiULwTj/gppCmALLgNBCW3vrQww==",
+    "size": 7817
+  },
+  {
+    "name": "@terraweave/math",
+    "version": "0.1.0",
+    "filename": "terraweave-math-0.1.0.tgz",
+    "integrity": "sha512-A3E9THEmQnoFZK1J4kbLEyfbqo0xlqhDQoG493ZT7mc8FGyxpZ7GvtoFGNWXw0VSUo+ocVy5YNBrcflxsbixVw==",
+    "size": 3280
+  },
+  {
+    "name": "@terraweave/nodes",
+    "version": "0.1.0",
+    "filename": "terraweave-nodes-0.1.0.tgz",
+    "integrity": "sha512-bpfTGmJEgHfMSdEU35HdqNp6GZCcsaPI+ry1/S0tHIzpBXe+sfs90M/5mnIJjxeXlHaszQLrEDytyF+bRjkO9A==",
+    "size": 6387
+  },
+  {
+    "name": "@terraweave/renderer",
+    "version": "0.1.0",
+    "filename": "terraweave-renderer-0.1.0.tgz",
+    "integrity": "sha512-q2sfUWyvTUsiXgAYHs6kT24xvro6AoQLFHQdbZyFiF/zv1vsDnFqfoGvl476zAni1HyGscs6tl9Zk+JTDj7HrA==",
+    "size": 14357
+  },
+  {
+    "name": "@terraweave/ui",
+    "version": "0.1.0",
+    "filename": "terraweave-ui-0.1.0.tgz",
+    "integrity": "sha512-sD2n7EDAsWkqtQqJl3e0MDJzKCkMVFDqDaghxlArjoccB6bceVVhIm8GMOtFQcithkIALz1USk91XBlU1kXh6g==",
+    "size": 10069
+  },
+  {
+    "name": "@terraweave/webgpu",
+    "version": "0.1.0",
+    "filename": "terraweave-webgpu-0.1.0.tgz",
+    "integrity": "sha512-dEANNIb3OVnZDY7PlmRb4c/zxQ8ARJzLXu3eCz9te8AVc/3NWKGNOHvA83Eskkp6X9Qbxuvvm5n+2AHkcSX8Nw==",
+    "size": 9891
+  }
+]

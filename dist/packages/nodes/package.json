@@ -1,0 +1,16 @@
+{
+  "name": "@terraweave/nodes",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Shared declarative terrain node registry",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src"
+  ],
+  "license": "MIT",
+  "sideEffects": false,
+  "dependencies": {}
+}

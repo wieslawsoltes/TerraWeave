@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#13191d"><meta name="description" content="TerraWeave — an original procedural terrain studio. GPU-powered terrain generation, erosion, node graphs, surfacing and production export, entirely in your browser.">
+<title>TerraWeave — Procedural terrain studio</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23192123'/%3E%3Cpath d='M5 25 15 6l12 19H5Zm5 0 6-12 7 12M8 20h16M12 15h9' stroke='%2397d8bf' fill='none' stroke-width='1.6'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../packages/ui/src/styles.css">
+<link rel="stylesheet" href="../packages/graph-ui/src/styles.css">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app">
+ <header class="titlebar">
+  <button id="brand" class="brand" title="About TerraWeave"><span data-icon="logo"></span><strong>TerraWeave<span class="brand-dot">.</span></strong></button>
+  <span class="header-divider"></span>
+  <div class="project-identity"><input id="projectName" aria-label="Project name" value="Alpine watershed" maxlength="80"><span id="dirtyDot" class="dirty-dot" title="Unsaved changes"></span><span class="project-type">TERRAIN PROJECT</span></div>
+  <div class="history-buttons"><button id="undo" class="icon-button" title="Undo (⌘/Ctrl Z)" aria-label="Undo" data-icon="undo"></button><button id="redo" class="icon-button" title="Redo (⌘/Ctrl Shift Z)" aria-label="Redo" data-icon="redo"></button></div>
+  <div class="titlebar-spacer"></div>
+  <button id="commandButton" class="command-trigger"><span data-icon="search"></span><span class="desktop-only">Commands</span><kbd>⌘ K</kbd></button>
+  <button id="saveProject" class="icon-button" title="Save project (⌘/Ctrl S)" aria-label="Save project" data-icon="save"></button>
+  <button id="exportButton" class="button primary"><span data-icon="output"></span><span>Export</span></button>
+ </header>
+ <nav class="menubar" aria-label="Main menu">
+  <div class="menu-group"><button id="fileMenu">File</button><button id="editMenu">Edit</button><button id="viewMenu">View</button><button id="buildMenu">Build</button><button id="helpMenu">Help</button></div>
+  <span class="menubar-context">PROCEDURAL WORLD BUILDING</span>
+  <div class="menubar-spacer"></div>
+  <button id="worldSettings" class="world-button"><span data-icon="globe"></span><span id="worldDimensions">4.0 × 4.0 km</span></button>
+  <span class="tiny-divider"></span>
+  <label class="auto-build"><input id="autoBuild" type="checkbox" checked><span class="toggle-track"></span>Auto build</label>
+  <select id="resolution" class="compact-select" aria-label="Preview resolution"><option value="64">64²</option><option value="128">128²</option><option value="256" selected>256²</option><option value="512">512²</option><option value="1024">1024²</option></select>
+  <button id="buildButton" class="build-button"><span data-icon="play"></span><span>Build</span><kbd>B</kbd></button>
+  <button id="cancelBuild" class="icon-button danger" title="Cancel build" aria-label="Cancel build" data-icon="stop" hidden></button>
+ </nav>
+ <main id="workspace">
+  <aside id="library" class="side-panel library">
+   <div class="panel-heading"><span>NODE LIBRARY</span><span id="nodeCount" class="count-badge"></span><button id="toggleLibrary" class="icon-button small" data-icon="split" aria-label="Hide node library" title="Hide node library"></button></div>
+   <div class="library-search"><span data-icon="search"></span><input id="nodeSearch" placeholder="Find a node…" aria-label="Search nodes"><kbd>/</kbd></div>
+   <div class="library-tabs"><button class="active" data-library-tab="all">All nodes</button><button data-library-tab="favorites"><span data-icon="star"></span>Favorites</button></div>
+   <div class="library-scroll"><div id="nodeLibrary"></div><section class="starter-worlds"><div class="section-heading"><span>STARTER WORLDS</span><span>06</span></div><div id="presetGrid" class="preset-grid"></div></section></div>
+   <div class="library-footer"><button id="importHeight" class="button subtle full"><span data-icon="import"></span>Import heightfield</button><p>Click to add · drag into the graph</p></div>
+  </aside>
+  <section id="centerColumn" class="center-column">
+   <section id="viewportPanel" class="viewport-panel">
+    <div class="viewport-toolbar">
+     <div class="segmented" aria-label="Viewport mode"><button id="view3D" class="active"><span data-icon="cube"></span>3D View</button><button id="view2D"><span data-icon="map"></span>2D Map</button></div>
+     <span class="toolbar-separator"></span>
+     <select id="displayMode" class="display-select" aria-label="Viewport shading"><option value="0">Material</option><option value="1">Height</option><option value="2">Clay</option><option value="3">Normals</option><option value="4">Wireframe</option></select>
+     <div class="toolbar-spacer"></div>
+     <button id="toggleContours" class="icon-button" data-icon="terrace" title="Contour lines" aria-label="Toggle contour lines" aria-pressed="false"></button>
+     <button id="toggleWater" class="icon-button active" data-icon="water" title="Water surface" aria-label="Toggle water" aria-pressed="true"></button>
+     <button id="toggleShadows" class="icon-button active" data-icon="sun" title="Terrain shadows" aria-label="Toggle shadows" aria-pressed="true"></button>
+     <span class="toolbar-separator"></span>
+     <button id="sceneSettings" class="icon-button" data-icon="settings" title="Scene settings" aria-label="Scene settings"></button>
+     <button id="fullscreen" class="icon-button" data-icon="fit" title="Fullscreen viewport" aria-label="Fullscreen viewport"></button>
+    </div>
+    <div id="viewportHost" class="viewport-host">
+     <canvas id="terrainCanvas" aria-label="Interactive terrain viewport. Drag to orbit, shift-drag to pan, scroll to zoom."></canvas>
+     <div class="viewport-title"><div class="viewport-eyebrow"><span class="live-dot"></span><span id="previewLabel">FINAL SURFACE</span></div><h1 id="terrainTitle">Alpine watershed</h1><p id="terrainSubtitle">Procedural terrain · physically shaped</p></div>
+     <div class="viewport-tools"><button id="resetCamera" class="viewport-tool" data-icon="refresh" title="Reset camera (F)" aria-label="Reset camera"></button><button id="topCamera" class="viewport-tool" data-icon="map" title="Top camera" aria-label="Top camera"></button><button id="toggleGrid" class="viewport-tool active" data-icon="grid" title="Ground grid" aria-label="Toggle grid"></button><span></span><button id="sculptTool" class="viewport-tool" data-icon="brush" title="Sculpt terrain in 2D" aria-label="Sculpt terrain"></button><button id="capture" class="viewport-tool" data-icon="camera" title="Save viewport image" aria-label="Save viewport image"></button></div>
+     <div class="viewport-footnote"><span class="scale-rule"></span><span id="scaleLabel">4,000 m terrain extent</span><span class="viewport-controls">Orbit <kbd>Drag</kbd><i>·</i> Pan <kbd>Shift</kbd> + <kbd>Drag</kbd><i>·</i> Zoom <kbd>Scroll</kbd></span></div>
+     <div class="orientation"><span class="axis-y">Y</span><span class="axis-x">X</span><span class="axis-z">Z</span><i></i></div>
+     <div id="brushCursor" class="brush-cursor" hidden></div>
+     <div id="brushToolbar" class="brush-toolbar" hidden><span data-icon="brush"></span><select id="brushMode" aria-label="Brush mode"><option value="raise">Raise</option><option value="lower">Lower</option><option value="smooth">Smooth</option><option value="flatten">Flatten</option></select><label>Size<input id="brushRadius" type="range" min=".01" max=".3" step=".005" value=".065" aria-label="Brush radius"></label><label>Strength<input id="brushStrength" type="range" min=".001" max=".1" step=".001" value=".018" aria-label="Brush strength"></label><button id="exitSculpt" class="icon-button" data-icon="close" title="Exit sculpt mode" aria-label="Exit sculpt mode"></button></div>
+     <div id="loadingSplash" class="loading-splash"><span class="loading-logo" data-icon="logo"></span><strong>Weaving your first landscape</strong><span id="loadingDetail">Initializing the terrain engine…</span><i class="loading-line"></i></div>
+     <div id="buildProgress" class="build-progress"><div id="buildProgressFill"></div></div>
+    </div>
+   </section>
+   <div id="graphResizer" class="graph-resizer" role="separator" aria-label="Resize graph panel" aria-orientation="horizontal"><span></span></div>
+   <section id="graphPanel" class="graph-panel">
+    <div class="graph-toolbar"><div class="graph-title"><span data-icon="nodes"></span><strong>Terrain graph</strong><span id="graphCount" class="count-badge">7 nodes</span></div><div class="graph-build-summary" id="graphBuildSummary">Ready to build</div><div class="toolbar-spacer"></div><button id="addNode" class="icon-button small" data-icon="plus" title="Add node (Tab)" aria-label="Add node"></button><button id="duplicateNode" class="icon-button small" data-icon="copy" title="Duplicate selected nodes" aria-label="Duplicate selected nodes"></button><button id="deleteNode" class="icon-button small" data-icon="trash" title="Delete selected nodes" aria-label="Delete selected nodes"></button><span class="toolbar-separator"></span><button id="fitGraph" class="icon-button small" data-icon="fit" title="Fit graph (Home)" aria-label="Fit graph"></button><button id="graphZoom" class="zoom-button" title="Reset graph zoom">100%</button><button id="graphMore" class="icon-button small" data-icon="dots" title="Graph actions" aria-label="Graph actions"></button></div>
+    <div id="graphCanvas"></div>
+   </section>
+  </section>
+  <aside id="inspector" class="side-panel inspector">
+   <div class="inspector-tabs" role="tablist"><button class="active" data-inspector-tab="properties" role="tab" aria-selected="true">Properties</button><button data-inspector-tab="scene" role="tab" aria-selected="false">Scene</button><button data-inspector-tab="build" role="tab" aria-selected="false">Build</button></div>
+   <div id="inspectorBody" class="inspector-body"></div>
+   <div class="inspector-bottom"><span class="local-status-dot"></span><span id="autosaveStatus">Project stays on your device</span><span data-icon="lock"></span></div>
+  </aside>
+ </main>
+ <footer class="statusbar"><span id="stateDot" class="state-dot"></span><span id="statusText">Initializing…</span><div class="status-spacer"></div><span id="computeBadge" class="compute-badge">Detecting GPU</span><span class="status-divider"></span><span id="cacheStats">0 MB cache</span><span class="status-divider"></span><span id="sampleStats">256 × 256</span><span class="status-divider"></span><span id="rendererStats">On-demand rendering</span><button id="statusHelp" data-icon="help" aria-label="Open guide" title="Guide and keyboard shortcuts"></button></footer>
+ <div class="mobile-actions"><button id="mobileLibrary" class="icon-button" data-icon="plus" aria-label="Open node library"></button><button id="mobileInspector" class="icon-button" data-icon="settings" aria-label="Open properties"></button></div>
+</div>
+<input id="projectFile" type="file" accept=".json,.terraweave" hidden><input id="heightFile" type="file" accept=".png,.jpg,.jpeg,.webp,.r16,.r32,.raw,.f32" hidden>
+<script type="module" src="./main.js"></script>
+</body>
+</html>

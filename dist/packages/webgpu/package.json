@@ -1,0 +1,21 @@
+{
+  "name": "@terraweave/webgpu",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Native WebGPU terrain kernels and buffer management",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./shaders": "./src/shaders.js"
+  },
+  "files": [
+    "src"
+  ],
+  "license": "MIT",
+  "sideEffects": false,
+  "dependencies": {
+    "@terraweave/core": "0.1.0",
+    "@terraweave/kernels": "0.1.0",
+    "@terraweave/nodes": "0.1.0"
+  }
+}
