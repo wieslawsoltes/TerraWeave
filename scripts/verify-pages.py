@@ -65,22 +65,36 @@ try:
             fatal = page.evaluate('window.__terraweaveFatal || null')
             assert not fatal, fatal
             page.wait_for_function('window.terraweave && terraweave.snapshot && !terraweave.busy', timeout=120000)
-            report['application'] = page.evaluate('''() => {
+            report['application'] = page.evaluate('''async () => {
                 const t = terraweave, a = t.snapshot.height;
+                const { createPreset } = await import(new URL('packages/nodes/src/index.js', document.baseURI).href);
+                const expected = createPreset('alpine');
+                const nodes = list => list.map(n => [n.id, n.type]).sort((a, b) => a[0].localeCompare(b[0]));
+                const edges = list => list.map(e => [e.from, e.port, e.to, e.input].join(':')).sort();
+                const matchesStarterGraph = JSON.stringify(nodes(t.graph.nodes)) === JSON.stringify(nodes(expected.nodes))
+                    && JSON.stringify(edges(t.graph.edges)) === JSON.stringify(edges(expected.edges))
+                    && t.graph.project.output === expected.output;
                 let minimum = Infinity, maximum = -Infinity, finite = true;
                 for (const v of a) { finite = finite && Number.isFinite(v); minimum = Math.min(minimum, v); maximum = Math.max(maximum, v); }
-                return { compute: t.engine.backend.kind, renderer: t.renderer.kind,
-                         resolution: t.snapshot.size, samples: a.length, minimum, maximum, finite,
-                         nodes: t.graph.nodes.length, gpuErrors: [...t.gpuErrors] };
+                return { compute: t.engine.backend.kind, workerActive: !!t.engine.backend.worker,
+                         workerFailure: t.engine.backend.workerFailure || null,
+                         renderer: t.renderer.kind, resolution: t.snapshot.size, samples: a.length,
+                         minimum, maximum, finite, nodes: t.graph.nodes.length,
+                         expectedNodes: expected.nodes.length, matchesStarterGraph,
+                         gpuErrors: [...t.gpuErrors] };
             }''')
             app = report['application']
             assert app['finite'] and app['samples'] == app['resolution'] ** 2, app
-            assert app['maximum'] > app['minimum'] and app['nodes'] == 6, app
+            assert app['maximum'] > app['minimum'], app
+            assert app['matchesStarterGraph'], app
             assert not app['gpuErrors'], app['gpuErrors']
             page.screenshot(path=str(out / 'live-desktop.png'))
             page.set_viewport_size({'width': 430, 'height': 900})
             page.wait_for_timeout(300)
             assert page.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'), 'Mobile horizontal overflow'
+            page.locator('#mobileInspector').click()
+            assert page.evaluate('getComputedStyle(document.getElementById("inspector")).display !== "none"'), 'Mobile inspector did not open'
+            page.locator('#mobileInspector').click()
             page.screenshot(path=str(out / 'live-mobile.png'))
             assert not errors, errors
         finally:
