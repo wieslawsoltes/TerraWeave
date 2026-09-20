@@ -1,0 +1,6 @@
+# Independent format-reader gate: versions validated against the export fixtures.
+# Keep updates explicit so upstream decoder changes do not silently change CI.
+Pillow==12.3.0
+numpy==2.3.5
+opencv-python-headless==4.13.0.92
+trimesh==4.11.1
