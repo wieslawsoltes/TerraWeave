@@ -1,0 +1,67 @@
+name: Import and validate complete TerraWeave source
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/transfer/**'
+      - '.github/workflows/import.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: terraweave-source-import
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Extract verified original source and commit editable project
+        run: |
+          python3 .github/import-source.py
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'feat: import complete TerraWeave studio and ten standalone packages'
+          git push origin HEAD:main
+      - name: Validate core and build static application
+        run: npm test
+      - name: Validate independent package installation
+        run: npm run test:packages
+      - name: Generate binary terrain fixtures and self-contained application
+        run: |
+          npm run examples
+          npm run build
+      - name: Install browser validation tools
+        run: |
+          python3 -m pip install playwright
+          python3 -m playwright install --with-deps chromium
+      - name: Run browser workflows and recapture screenshots
+        run: |
+          export CHROMIUM="$(python3 -c 'from playwright.sync_api import sync_playwright; p=sync_playwright().start(); print(p.chromium.executable_path); p.stop()')"
+          python3 tests/browser.py --inline
+          mkdir -p docs/screenshots
+          mv tests/desktop.png docs/screenshots/desktop.png
+          mv tests/flow-map.png docs/screenshots/flow-map.png
+          mv tests/mobile.png docs/screenshots/mobile.png
+      - name: Commit distribution, package archives, examples and validation evidence
+        run: |
+          git add -A
+          git add -f artifacts
+          git commit -m 'build: add runnable distribution, npm archives, binary examples and CI evidence'
+          git push origin HEAD:main
+      - name: Retain validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: terraweave-import-validation
+          path: |
+            tests/*results.json
+            tests/browser-console.json
+            tests/*.png
+            docs/screenshots
+          if-no-files-found: ignore
